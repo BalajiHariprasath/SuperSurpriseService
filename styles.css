@@ -169,6 +169,7 @@ body {
 }
 
 /* General Styles */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -183,64 +184,122 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    overflow: hidden; /* Prevents page from scrolling */
 }
 
 /* Tabs Container */
 .tabs-container {
-    width: 80%;
-    max-width: 1000px;
-    background-color: #fff;
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Limits the max width */
+    height: 90vh; /* Height takes 90% of the viewport */
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-/* Tab Navigation */
+/* Vertical Tab Navigation */
 .tabs {
-    display: flex;
-    justify-content: space-around;
+    width: 220px;
     background-color: #3498db;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-top: 20px;
+    overflow-y: auto;
 }
 
+/* Tab Styles */
 .tab {
-    padding: 16px 32px;
+    padding: 18px;
+    font-size: 1.5vw; /* Set font size based on viewport width */
     cursor: pointer;
     text-align: center;
-    flex: 1;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tab:hover {
     background-color: #2980b9;
+    transform: scale(1.1);
 }
 
-/* Active Tab */
+.tab .icon {
+    margin-right: 10px;
+    font-size: 2.5em; /* Increase icon size */
+}
+
 .tab.active {
     background-color: #2ecc71;
+}
+
+/* Tab Content Container (Horizontal Layout) */
+.tab-content-container {
+    display: flex;
+    flex: 1;
+    overflow-x: auto;
+    padding: 20px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 }
 
 /* Tab Content */
 .tab-content {
     display: none;
-    padding: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
     text-align: center;
+    background-color: #fff;
+    transition: opacity 0.5s ease;
 }
 
 .tab-content.active {
     display: block;
+    opacity: 1;
+}
+
+.tab-content h2 {
+    color: #3498db;
+    margin-bottom: 20px;
+    font-size: 2em; /* Increase the font size */
+}
+
+.tab-content p {
+    font-size: 1.3em; /* Increase text size */
+    color: #333;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .tabs {
-        flex-direction: column;
+        width: 150px;
+        padding-top: 10px;
     }
 
     .tab {
-        padding: 12px;
+        padding: 14px;
+        font-size: 4vw; /* Font size adjusts on smaller screens */
     }
 
     .tab-content {
-        padding: 15px;
+        padding: 20px;
+    }
+
+    .tab-content h2 {
+        font-size: 1.5em;
+    }
+
+    .tab-content p {
+        font-size: 1.2em;
     }
 }
