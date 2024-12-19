@@ -6,34 +6,33 @@ document.getElementById('login-form').addEventListener('submit', function(event)
 
     // Hardcoded login credentials (you can replace this with an API call in real scenarios)
     const correctUsername = "admin";
-    const correctPassword = "admin123";
+    const correctPassword = "admin";
 
     // Check if the entered credentials are correct
     if (username === correctUsername && password === correctPassword) {
         // Redirect to success page
-        window.location.href = "success.html"; // Change to success.html
+        window.location.href = "content.html"; // Change to success.html
     } else {
         alert("Invalid credentials. Please try again.");
     }
 });
 
-// Get all tabs and content elements
-const tabs = document.querySelectorAll('.tab');
-const tabContents = document.querySelectorAll('.tab-content');
+// Function to show content for the clicked tab
+function showTab(index) {
+    // Get all tabs and content elements
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+    
+    // Remove the 'active' class from all tabs and content
+    tabs.forEach(tab => tab.classList.remove('active'));
+    contents.forEach(content => content.classList.remove('active'));
+    
+    // Add the 'active' class to the clicked tab and corresponding content
+    tabs[index].classList.add('active');
+    contents[index].classList.add('active');
+}
 
-// Add an event listener to each tab
-tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-        // Remove the 'active' class from all tabs and content
-        tabs.forEach(t => t.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-
-        // Add the 'active' class to the clicked tab and corresponding content
-        tab.classList.add('active');
-        tabContents[index].classList.add('active');
-    });
+// Set the first tab as active by default when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    showTab(0);  // Display the first tab by default
 });
-
-// Set the first tab and content to be active by default
-tabs[0].classList.add('active');
-tabContents[0].classList.add('active');
