@@ -17,6 +17,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     }
 });
 
+
 // Function to show content for the clicked tab
 function showTab(index) {
     // Get all tabs and content elements
