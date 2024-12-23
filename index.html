@@ -3,52 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product List</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      padding: 20px;
-    }
-    h2 {
-      text-align: center;
-    }
-    .product {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .product h3 {
-      margin: 0;
-    }
-  </style>
+  <title>Generate QR Code</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
+  <h2>Generate QR Code for Product List</h2>
+  <div id="qrcode"></div>
 
-  <h2>Product List</h2>
-
-  <div class="product">
-    <h3>Product 1</h3>
-    <p>Price: $10.00</p>
-    <p>Description: This is a great product.</p>
-  </div>
-
-  <div class="product">
-    <h3>Product 2</h3>
-    <p>Price: $20.00</p>
-    <p>Description: This is another great product.</p>
-  </div>
-
-  <div class="product">
-    <h3>Product 3</h3>
-    <p>Price: $15.00</p>
-    <p>Description: This product is amazing.</p>
-  </div>
-
-  <!-- Add more products as needed -->
-
+  <script>
+    const url = "https://yourwebsite.com/products"; // URL to your product list page
+    // Generate the QR code
+    QRCode.toCanvas(document.getElementById('qrcode'), url, function (error) {
+      if (error) console.error(error);
+      console.log('QR code generated!');
+    });
+  </script>
 </body>
 </html>
